@@ -3,18 +3,24 @@ const canvas = document.querySelector('canvas');
 // O CONTEXTO É IMPORTANTE DIZER SEMPRE.
 const ctx = canvas.getContext('2d');
 
+const menu2 = document.querySelector('.menu-principal')
 const score = document.querySelector('.score-value');
 const finalScore = document.querySelector('.final-score > span');
 const menu = document.querySelector('.menu-screen');
-const buttonPlay = document.querySelector('.btn-play')
-
-// tamnho da combrinha(cada quadrado)
+const buttonPlay = document.querySelector('.btn-play');
+const displayGame = document.querySelector('.game-screen');
 
 const audio = new Audio('../audio/audio.mp3');
 
 const size = 30;
 
 const inicialPosition = [{x: 300, y: 240 }];
+
+function iniciar(){
+    displayGame.style.display = 'flex';
+    menu.display
+    menu2.style.display = 'none';
+}
 
 
 let snake = [
@@ -184,7 +190,7 @@ const gameLoop = () =>{
 
     loopId = setTimeout(()=>{
         gameLoop();
-    },300);
+    },200);
 }
 
 gameLoop();
@@ -210,6 +216,8 @@ buttonPlay.addEventListener('click', () =>{
     canvas.style.filter = 'none';
     snake = inicialPosition;
 })
+
+
 
 
 
