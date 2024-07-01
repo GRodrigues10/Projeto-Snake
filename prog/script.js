@@ -18,7 +18,6 @@ const inicialPosition = [{x: 300, y: 240 }];
 
 function iniciar(){
     displayGame.style.display = 'flex';
-    menu.display
     menu2.style.display = 'none';
 }
 
@@ -210,12 +209,24 @@ document.addEventListener('keydown', ({key}) =>{
     }
 })
 
-buttonPlay.addEventListener('click', () =>{
+buttonPlay.addEventListener('click', () => {
     score.innerText = '00';
     menu.style.display = 'none';
     canvas.style.filter = 'none';
-    snake = inicialPosition;
-})
+    
+    // Reiniciar variáveis essenciais
+    snake = [{ x: 270, y: 240 }]; // Posição inicial da cobra
+    food = {
+        x: randomPosition(),
+        y: randomPosition(),
+        color: randomColor()
+    }; // Nova posição da comida
+    direction = 'right'; // Direção inicial da cobra
+    
+    // Reiniciar o loop do jogo
+    clearInterval(loopId); // Limpa o loop anterior
+    gameLoop(); // Inicia um novo loop do jogo
+});
 
 
 
