@@ -19,6 +19,7 @@ const inicialPosition = [{x: 300, y: 240 }];
 function iniciar(){
     displayGame.style.display = 'flex';
     menu2.style.display = 'none';
+    audio.volume = 0
 }
 
 
@@ -130,27 +131,32 @@ const drawGrid = ()=>{
   
 }
 
-const checkEat = ()=>{
 
+
+
+const checkEat = () => {
     const head = snake[snake.length - 1];
-    if(head.x == food.x && head.y == food.y){
-        incrementScore();
-        snake.push(head)
-        audio.play()
-        let x = randomPosition()
-        let y = randomPosition()
-      
 
-        while(snake.find((position)=>position.x == x && position.y == y)){
-            x = randomPosition()
-            y = randomPosition()
+    if (head.x == food.x && head.y == food.y) {
+        incrementScore();
+        snake.push(head);
+
+        // Aumenta o volume do áudio ao comer a maçã
+        audio.volume = 1;
+        audio.play();
+
+        let x = randomPosition();
+        let y = randomPosition();
+
+        while (snake.find((position) => position.x == x && position.y == y)) {
+            x = randomPosition();
+            y = randomPosition();
         }
 
         food.x = x;
         food.y = y;
         food.color = randomColor();
     }
-
 }
 
 const checkColision = ()=>{
