@@ -133,7 +133,7 @@ const drawGrid = ()=>{
 const checkEat = ()=>{
 
     const head = snake[snake.length - 1];
-
+    const audio = new Audio('./audio/audio.mp3');
     if(head.x == food.x && head.y == food.y){
         incrementScore();
         snake.push(head)
